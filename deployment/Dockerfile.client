@@ -1,0 +1,28 @@
+ARG PROJECT="dapr-grpc-example"
+
+FROM golang:1.16 as build
+
+ARG PROJECT
+WORKDIR /${PROJECT}
+
+ARG MODULE="github.com/DazWilkin/${PROJECT}"
+
+COPY go.mod .
+RUN go mod download
+
+COPY *.go ./
+
+RUN CGO_ENABLED=0 GOOS=linux \
+    go build -a -installsuffix cgo \
+    -o /bin/${PROJECT} \
+    ${MODULE}
+
+
+FROM gcr.io/distroless/base-debian10
+
+ARG PROJECT
+
+COPY --from=build /bin/${PROJECT} /client
+
+ENTRYPOINT ["/client"]
+CMD ["--app=server"]
