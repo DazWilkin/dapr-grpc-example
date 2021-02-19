@@ -12,10 +12,12 @@ import (
 )
 
 var (
-	port = flag.Int("--port", 50051, "gRPC port")
+	port = flag.Int("port", 50051, "gRPC port")
 )
 
 func main() {
+	flag.Parse()
+	log.Printf("[main] Entered (port: %d", *port)
 
 	endpoint := fmt.Sprintf(":%d", *port)
 	server, err := daprd.NewService(endpoint)
@@ -41,24 +43,11 @@ func echo(ctx context.Context, in *common.InvocationEvent) (out *common.Content,
 		return
 	}
 	log.Printf(
-		"[main:echo] ContentType:%s, Verb:%s, QueryString:%s, %s",
-		in.ContentType, in.Verb, in.QueryString, in.Data,
+		"[main:echo] ContentType:%s, Verb:%s, QueryString:%s, DataTypeURL:%s, %s",
+		in.ContentType, in.Verb, in.QueryString, in.DataTypeURL, in.Data,
 	)
 	out = &common.Content{
 		Data:        in.Data,
-		ContentType: in.ContentType,
-		DataTypeURL: in.DataTypeURL,
-	}
-	return
-}
-func healthz(ctx context.Context, in *common.InvocationEvent) (out *common.Content, err error) {
-	log.Println("[main:healthz] Entered")
-	log.Printf(
-		"[main:healthz] ContentType:%s, Verb:%s, QueryString:%s, %s",
-		in.ContentType, in.Verb, in.QueryString, in.Data,
-	)
-	out = &common.Content{
-		Data:        []byte("ok"),
 		ContentType: in.ContentType,
 		DataTypeURL: in.DataTypeURL,
 	}

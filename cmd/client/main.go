@@ -11,11 +11,12 @@ import (
 )
 
 var (
-	appID = flag.String("--app", "", "dapr appID may include namespace")
+	appID = flag.String("app", "", "dapr appID")
 )
 
 func main() {
-	log.Println("[main] Entered")
+	flag.Parse()
+	log.Printf("[main] Entered (appID: %s", *appID)
 
 	client, err := dapr.NewClient()
 	if err != nil {
