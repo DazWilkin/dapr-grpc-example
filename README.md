@@ -1,4 +1,6 @@
-# dapr: gRPC Golang example
+# Dapr: gRPC Golang example
+
+A simplified dupe of the [Dapr SDK for Go](https://github.com/dapr/go-sdk) example
 
 ## Notes
 
@@ -20,17 +22,17 @@ kubectl apply \
 --namespace=${NAMESPACE}
 
 kubectl get all --namespace=${NAMESPACE}
-NAME                          READY   STATUS    RESTARTS   AGE
-pod/server-7bfdb46b95-f6b48   2/2     Running   0          8s
+NAME                          READY   STATUS
+pod/server-7bfdb46b95-f6b48   2/2     Running
 
-NAME                  TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                               AGE
-service/server-dapr   ClusterIP   None         <none>        80/TCP,50001/TCP,50002/TCP,9090/TCP   8s
+NAME                  TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)
+service/server-dapr   ClusterIP   None         <none>        80/TCP,50001/TCP,50002/TCP,9090/TCP
 
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/server   0/1     1            0           8s
+NAME                     READY   UP-TO-DATE   AVAILABLE
+deployment.apps/server   0/1     1            0
 
-NAME                                DESIRED   CURRENT   READY   AGE
-replicaset.apps/server-7bfdb46b95   1         1         0       8s
+NAME                                DESIRED   CURRENT   READY
+replicaset.apps/server-7bfdb46b95   1         1         0
 ```
 
 From e.g. `ashapp`, you can invoke a REST (!) endpoint against the gRPC server:
