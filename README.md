@@ -1,5 +1,9 @@
 # Dapr: gRPC Golang example
 
+[![containers](https://github.com/DazWilkin/dapr-grpc-example/actions/workflows/containers.yaml/badge.svg)](https://github.com/DazWilkin/dapr-grpc-example/actions/workflows/containers.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/DazWilkin/dapr-grpc-example)](https://goreportcard.com/report/github.com/DazWilkin/dapr-grpc-example)
+[![Go Reference](https://pkg.go.dev/badge/github.com/DazWilkin/dapr-grpc-example.svg)](https://pkg.go.dev/github.com/DazWilkin/dapr-grpc-example)
+
 A simplified dupe of the [Dapr SDK for Go](https://github.com/dapr/go-sdk) example
 
 ## Notes
