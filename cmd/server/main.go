@@ -17,7 +17,7 @@ var (
 
 func main() {
 	flag.Parse()
-	log.Printf("[main] Entered (port: %d", *port)
+	log.Printf("[main] Entered (port: %d)", *port)
 
 	endpoint := fmt.Sprintf(":%d", *port)
 	server, err := daprd.NewService(endpoint)

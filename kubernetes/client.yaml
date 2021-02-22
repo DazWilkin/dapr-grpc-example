@@ -20,10 +20,10 @@ spec:
       imagePullSecrets:
         - name: ghcr
       containers:
-        - name: client
-          image: ghcr.io/dazwilkin/dapr-grpc-client@sha256:271497f6bc0df1ed506d02265caf83ebdfa200865295917690d8818719d622cc
+        - name: app
+          image: ghcr.io/dazwilkin/dapr-grpc-client:v0.0.2
           args:
-            - --app=server.example
+            - --app=server
           resources:
             limits:
               cpu: "500m"
